@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
+}
+
+/* Меню */
+.menu {
+    width: 250px;
+    height: 100vh;
+    background: #000;
+    border-right: 2px solid white;
+}
+
+.menu h1 {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid white;
+}
+
+/* Основні пункти */
+.menu-item {
+    display: block;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+}
+
+/* Ховер */
+.menu-item:hover {
+    background: white;
+    color: black;
+}
+
+/* Підменю */
+.submenu {
+    display: none;
+    background: #111;
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 30px;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+}
+
+.submenu a:hover {
+    background: white;
+    color: black;
+}
+
+/* CSS toggle */
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked + .menu-item + .submenu {
+    display: block;
+}
