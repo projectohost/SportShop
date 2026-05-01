@@ -76,10 +76,63 @@ button:hover {
 }
 
 /* Підвал */
-footer {
-    background-color: #111827;
+.footer {
+    background-color: #020617; /* ще темніший ніж header */
+    color: #e5e7eb;
+    padding: 50px 20px 20px;
+}
+
+/* Контейнер */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Колонки */
+.footer-column {
+    max-width: 250px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.footer-column h4 {
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+/* Посилання */
+.footer-column a {
+    display: block;
+    color: #9ca3af;
+    text-decoration: none;
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+.footer-column a:hover {
+    color: #38bdf8;
+    transform: translateX(5px);
+}
+
+/* Текст */
+.footer-column p {
+    color: #9ca3af;
+    margin: 6px 0;
+}
+
+/* Нижня частина */
+.footer-bottom {
+    border-top: 1px solid #1e293b;
+    margin-top: 30px;
+    padding-top: 15px;
     text-align: center;
-    padding: 15px;
+    font-size: 14px;
+    color: #6b7280;
 }
 /* Банер */
 .hero {
