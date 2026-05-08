@@ -213,3 +213,224 @@ button:hover {
     background-color: #38bdf8;
     color: #0f172a;
 }
+/* Відгуки */
+.reviews {
+    padding: 80px 20px;
+    background: #0b1d3a;
+    text-align: center;
+    color: white;
+}
+
+.reviews h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.review-card {
+    background: #132b52;
+    width: 320px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    transition: 0.4s;
+    position: relative;
+}
+
+/* Ефект руху */
+.review-card:nth-child(1) {
+    top: -10px;
+}
+
+.review-card:nth-child(2) {
+    top: 15px;
+}
+
+.review-card:nth-child(3) {
+    top: -5px;
+}
+
+.review-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    background: #18396d;
+}
+
+.review-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.review-top img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #4da3ff;
+}
+
+.review-top h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.review-top span {
+    color: #ffd700;
+    font-size: 14px;
+}
+
+.review-card p {
+    color: #dbe7ff;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Форма */
+.comment-form {
+    margin-top: 70px;
+}
+
+.comment-form h3 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.comment-form form {
+    max-width: 650px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: #132b52;
+    color: white;
+    font-size: 16px;
+}
+
+.comment-form input::placeholder,
+.comment-form textarea::placeholder {
+    color: #b7c7e6;
+}
+
+.comment-form textarea {
+    height: 150px;
+    resize: none;
+}
+
+.comment-form button {
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: #4da3ff;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.comment-form button:hover {
+    background: #2b7de0;
+    transform: scale(1.03);
+}
+
+/* Галерея */
+.gallery {
+    padding: 80px 20px;
+    background: #ffffff;
+    text-align: center;
+}
+
+.gallery h2 {
+    margin-bottom: 50px;
+    font-size: 36px;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Рух картинок */
+.gallery-container img {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: 0.4s;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.gallery-container img:nth-child(1) {
+    transform: rotate(-4deg) translateY(10px);
+}
+
+.gallery-container img:nth-child(2) {
+    transform: rotate(3deg) translateY(-15px);
+}
+
+.gallery-container img:nth-child(3) {
+    transform: rotate(-2deg) translateY(12px);
+}
+
+.gallery-container img:hover {
+    transform: scale(1.08) rotate(0deg);
+    z-index: 2;
+}
+/* Галерея магазину */
+.gallery {
+    padding: 80px 20px;
+    background: #0b1d3a;
+    text-align: center;
+}
+
+.gallery h2 {
+    margin-bottom: 50px;
+    font-size: 36px;
+    color: white;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Рівні картинки */
+.gallery-container img {
+    width: 320px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: 0.4s;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    border: 3px solid #18396d;
+}
+
+/* Hover ефект */
+.gallery-container img:hover {
+    transform: scale(1.05);
+    border-color: #4da3ff;
+}
