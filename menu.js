@@ -1,114 +1,51 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-<meta charset="UTF-8">
-<title>Sport Store</title>
+// ===============================
+// SportShop JavaScript
+// ===============================
 
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: black;
-        color: white;
-    }
-
-    .menu {
-        display: flex;
-        flex-direction: column;
-        width: 250px;
-        height: 100vh;
-        background: #000;
-        border-right: 2px solid white;
-    }
-
-    .menu h1 {
-        text-align: center;
-        padding: 20px;
-        border-bottom: 1px solid white;
-    }
-
-    .menu-item {
-        padding: 15px 20px;
-        cursor: pointer;
-        border-bottom: 1px solid #333;
-        transition: 0.3s;
-    }
-
-    .menu-item:hover {
-        background: white;
-        color: black;
-    }
-
-    .submenu {
-        display: none;
-        background: #111;
-    }
-
-    .submenu div {
-        padding: 10px 30px;
-        font-size: 14px;
-    }
-
-    .submenu div:hover {
-        background: white;
-        color: black;
-    }
-</style>
-</head>
-
-<body>
-
-<div class="menu" id="menu"></div>
-
-<script>
-const menuData = [
+// Знаходимо всі кнопки "Купити"
+const buyButtons = document.querySelectorAll(".buy-btn");
+const items = [
     {
-        title: "ГОЛОВНА",
-        items: ["Новинки", "Акції", "Хіти продажів"]
-    },
-    {
-        title: "ОДЯГ",
-        items: ["Футболки", "Худі", "Штани", "Куртки"]
-    },
-    {
-        title: "ВЗУТТЯ",
-        items: ["Бігові", "Тренувальні", "Повсякденні"]
-    },
-    {
-        title: "АКСЕСУАРИ",
-        items: ["Рюкзаки", "Кепки", "Пляшки"]
-    },
-    {
-        title: "СПОРТ",
-        items: ["Фітнес", "Біг", "Футбол", "Баскетбол"]
+        name: "потжнокросівки",
+        img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRF3bcn8mmGwintvYTt6TfDl0xd549TVdkZ9GVERBjt4S7ItdE2I8UtjnXNHwA1Jly940sPIU7XA-bHiwIsGcBVLwyf5en28piQQt1mcHThMBAddzyQkiysVjoV5Os2tR5y4Rfnc8ZZZIE&usqp=CAc",
+        price: "67 долларів"
     }
-];
+]
+// Лічильник товарів у кошику
+let cartCount = 0;
 
-const menu = document.getElementById("menu");
+// Перебираємо всі кнопки
+buyButtons.forEach((button) => {
 
-// створення меню
-menuData.forEach(section => {
-    const item = document.createElement("div");
-    item.classList.add("menu-item");
-    item.textContent = section.title;
+    // Додаємо подію кліку
+    button.addEventListener("click", () => {
 
-    const submenu = document.createElement("div");
-    submenu.classList.add("submenu");
+        // Знаходимо карточку товару
+        const card = button.parentElement;
 
-    section.items.forEach(sub => {
-        const subItem = document.createElement("div");
-        subItem.textContent = sub;
-        submenu.appendChild(subItem);
+        // Назва товару
+        const productName =
+            card.querySelector("h3").innerText;
+
+        // Ціна товару
+        const productPrice =
+            card.querySelector("p").innerText;
+
+        // Збільшуємо кількість товарів
+        cartCount++;
+
+        // Повідомлення
+        alert(
+            "🛒 Товар додано в кошик!\n\n" +
+            "Товар: " + productName + "\n" +
+            "Ціна: " + productPrice + "\n\n" +
+            "Товарів у кошику: " + cartCount
+        );
+
+        // Зміна кнопки після натискання
+        button.innerText = "✓ Додано";
+        button.style.backgroundColor = "green";
+
     });
 
-    item.addEventListener("click", () => {
-        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
-    });
-
-    menu.appendChild(item);
-    menu.appendChild(submenu);
 });
-</script>
-
-</body>
-</html>
