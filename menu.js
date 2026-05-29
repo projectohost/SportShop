@@ -73,18 +73,14 @@ const items = [
     }
 ];
 
-// ── helpers ──────────────────────────────────────────────────────────────────
-
 function parsePrice(str) {
     return parseInt(str.replace(/[^0-9]/g, ""), 10) || 0;
 }
 
-// ── state ─────────────────────────────────────────────────────────────────────
-
 let activeCategory = "all";
 let sortOrder = "default";
 
-// ── render cards ─────────────────────────────────────────────────────────────
+// Показ товару
 
 function renderCards() {
     const shop = document.getElementById("shop");
@@ -113,13 +109,12 @@ function renderCards() {
         shop.appendChild(card);
     });
 
-    // attach buy-button listeners
     shop.querySelectorAll(".buy-btn").forEach(btn => {
         btn.addEventListener("click", () => openDialog(btn.dataset.name, btn.dataset.price));
     });
 }
 
-// ── filter bar ───────────────────────────────────────────────────────────────
+// Фільтр
 
 function buildFilterBar() {
     const categories = ["all", ...new Set(items.map(i => i.category))];
@@ -127,7 +122,7 @@ function buildFilterBar() {
 
     const bar = document.getElementById("filter-bar");
 
-    // category buttons
+    // кнопки категорій
     const catWrap = document.createElement("div");
     catWrap.className = "filter-cats";
     categories.forEach(cat => {
@@ -144,7 +139,7 @@ function buildFilterBar() {
         catWrap.appendChild(btn);
     });
 
-    // sort select
+    // сортування
     const sortWrap = document.createElement("div");
     sortWrap.className = "filter-sort";
     const select = document.createElement("select");
@@ -163,7 +158,6 @@ function buildFilterBar() {
     bar.appendChild(sortWrap);
 }
 
-// ── order dialog ─────────────────────────────────────────────────────────────
 
 function openDialog(name, price) {
     document.getElementById("dialog-item-name").textContent = name;
@@ -182,7 +176,6 @@ function submitOrder() {
     const phone = document.getElementById("order-phone").value.trim();
 
     if (!name || !phone) {
-        // shake the empty fields
         ["order-name", "order-phone"].forEach(id => {
             const el = document.getElementById(id);
             if (!el.value.trim()) {
@@ -203,14 +196,11 @@ function showSuccess() {
     setTimeout(() => toast.classList.remove("visible"), 3000);
 }
 
-// ── close dialog on backdrop click ───────────────────────────────────────────
 
 document.addEventListener("click", e => {
     const dialog = document.getElementById("order-dialog");
     if (e.target === dialog) closeDialog();
 });
-
-// ── init ─────────────────────────────────────────────────────────────────────
 
 buildFilterBar();
 renderCards();
