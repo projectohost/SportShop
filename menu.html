@@ -15,16 +15,53 @@
     <!-- Шапка -->
     <header>
         <h1>🏆 SportShop</h1>
-
         <nav>
-            <a href="#">Головна</a>
+            <a href="./index.html">Головна</a>
             <a href="./menu.html">Каталог</a>
             <a href="#">Акції</a>
             <a href="#contact">Контакти</a>
         </nav>
     </header>
 
+    <!-- Filter bar -->
+    <div id="filter-bar" class="filter-bar"></div>
+
+    <!-- Product grid -->
     <div class="shop-container" id="shop"></div>
+
+    <!-- Order dialog -->
+    <div class="dialog-overlay" id="order-dialog">
+        <div class="dialog-box">
+            <button class="dialog-close" onclick="closeDialog()">✕</button>
+            <h2 class="dialog-title">Оформити замовлення</h2>
+
+            <div class="dialog-item-info">
+                <span class="dialog-item-label">Товар:</span>
+                <span id="dialog-item-name" class="dialog-item-value"></span>
+            </div>
+            <div class="dialog-item-info">
+                <span class="dialog-item-label">Ціна:</span>
+                <span id="dialog-item-price" class="dialog-item-value accent"></span>
+            </div>
+
+            <div class="dialog-field">
+                <label for="order-name">Ваше ім'я</label>
+                <input type="text" id="order-name" placeholder="Іван Петренко" />
+            </div>
+            <div class="dialog-field">
+                <label for="order-phone">Номер телефону</label>
+                <input type="tel" id="order-phone" placeholder="+380 XX XXX XX XX" />
+            </div>
+
+            <button class="dialog-submit" onclick="submitOrder()">Замовити</button>
+        </div>
+    </div>
+
+    <!-- Success toast -->
+    <div class="success-toast" id="success-toast">
+        <span class="toast-icon">✓</span>
+        Успішно розміщено замовлення!
+    </div>
 
     <script src="./menu.js"></script>
 </body>

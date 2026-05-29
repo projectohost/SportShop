@@ -5,7 +5,7 @@ body {
     color: white;
 }
 
-/* Меню */
+/* ── Меню ──────────────────────────────────────────────────── */
 .menu {
     width: 250px;
     height: 100vh;
@@ -19,7 +19,6 @@ body {
     border-bottom: 1px solid white;
 }
 
-/* Основні пункти */
 .menu-item {
     display: block;
     padding: 15px 20px;
@@ -27,13 +26,11 @@ body {
     border-bottom: 1px solid #333;
 }
 
-/* Ховер */
 .menu-item:hover {
     background: white;
     color: black;
 }
 
-/* Підменю */
 .submenu {
     display: none;
     background: #111;
@@ -52,7 +49,6 @@ body {
     color: black;
 }
 
-/* CSS toggle */
 input[type="checkbox"] {
     display: none;
 }
@@ -61,60 +57,360 @@ input[type="checkbox"]:checked + .menu-item + .submenu {
     display: block;
 }
 
-.shop-container {
+/* ── Filter bar ─────────────────────────────────────────────── */
+.filter-bar {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    gap: 12px;
+    padding: 20px 40px 0;
 }
 
-.card {
-    width: 250px;
+.filter-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.filter-btn:hover {
+    border-color: white;
+    color: white;
+}
+
+.filter-btn.active {
     background: white;
-    border-radius: 15px;
+    color: black;
+    border-color: white;
+    font-weight: 700;
+}
+
+.filter-sort select {
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    background: transparent;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.filter-sort select option {
+    background: #111;
+    color: white;
+}
+
+.filter-sort select:hover {
+    border-color: white;
+}
+
+/* ── Shop grid ──────────────────────────────────────────────── */
+.shop-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* ── Card ───────────────────────────────────────────────────── */
+.card {
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 24px;
+    box-shadow:
+        0 8px 32px rgba(0,0,0,0.35),
+        inset 0 1px 1px rgba(255,255,255,0.2);
+    transition: 0.35s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+    pointer-events: none;
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255,255,255,0.12);
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.45),
+        0 0 25px rgba(255,255,255,0.08);
 }
 
 .card img {
     width: 100%;
-    height: 220px;
+    height: 240px;
     object-fit: cover;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    display: block;
 }
 
 .card-body {
-    padding: 15px;
-    color: black;
-    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
 }
 
 .card-body h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    min-height: 3.5rem;
 }
 
 .price {
-    color: green;
-    font-size: 18px;
-    font-weight: bold;
+    color: #d8e6ff;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .buy-btn {
-    margin-top: 15px;
-    padding: 10px 20px;
+    margin-top: auto;
+    padding: 14px;
     border: none;
-    background: #ff6600;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.18);
     color: white;
-    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .buy-btn:hover {
-    background: #e65c00;
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.03);
+}
+
+.buy-btn:active {
+    transform: scale(0.97);
+}
+
+/* ── Order dialog ───────────────────────────────────────────── */
+.dialog-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-overlay.open {
+    display: flex;
+}
+
+.dialog-box {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 16px;
+    padding: 36px 32px 32px;
+    background: rgba(15,15,20,0.92);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    animation: dialogIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes dialogIn {
+    from { opacity: 0; transform: scale(0.88) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.dialog-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+    padding: 4px 8px;
+}
+
+.dialog-close:hover {
+    color: white;
+}
+
+.dialog-title {
+    margin: 0 0 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+}
+
+.dialog-item-info {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.dialog-item-label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+}
+
+.dialog-item-value {
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+}
+
+.dialog-item-value.accent {
+    color: #7eb8ff;
+    font-size: 1.15rem;
+}
+
+.dialog-field {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dialog-field label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+}
+
+.dialog-field input {
+    padding: 12px 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.07);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.25s;
+}
+
+.dialog-field input::placeholder {
+    color: rgba(255,255,255,0.3);
+}
+
+.dialog-field input:focus {
+    border-color: rgba(255,255,255,0.55);
+}
+
+.dialog-submit {
+    margin-top: 28px;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: white;
+    color: black;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.dialog-submit:hover {
+    background: #d8e6ff;
+    transform: scale(1.02);
+}
+
+.dialog-submit:active {
+    transform: scale(0.98);
+}
+
+/* shake animation for empty required fields */
+@keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20%      { transform: translateX(-8px); }
+    40%      { transform: translateX(8px); }
+    60%      { transform: translateX(-5px); }
+    80%      { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.4s ease;
+    border-color: #ff6b6b !important;
+}
+
+/* ── Success toast ──────────────────────────────────────────── */
+.success-toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: rgba(20,20,30,0.95);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2000;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.success-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #4cde80;
+    color: black;
+    font-size: 0.85rem;
+    font-weight: 900;
+    flex-shrink: 0;
 }
